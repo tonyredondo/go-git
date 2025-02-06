@@ -39,6 +39,13 @@ jobs:
       run: |
         git config --global user.email "gha@example.com"
         git config --global user.name "GitHub Actions"
+    
+    - name: Configure Datadog Test Optimization
+      uses: datadog/test-visibility-github-action@v2
+      with:
+        languages: go
+        api_key: ${{secrets.DD_API_KEY}}
+        site: datadoghq.com
 
     - name: Test
       run: make test-coverage
